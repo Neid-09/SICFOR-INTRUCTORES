@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="description"
+			content="Formulario de registro de instructores - SICFOR"
+		/>
+		<title>Registrar Instructor - SICFOR</title>
+		<link rel="stylesheet" href="style/form-instructor.css" />
+	</head>
+	<body>
+		<header class="header">
+			<button type="button" class="btn-volver" id="btnVolver">
+				<svg
+					width="20"
+					height="20"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+				>
+					<path d="M19 12H5M12 19l-7-7 7-7" />
+				</svg>
+				Volver
+			</button>
+			<div class="header-actions">
+				<button type="button" class="btn-icon" aria-label="Notificaciones">
+					<svg
+						width="20"
+						height="20"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+					>
+						<path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+						<path d="M13.73 21a2 2 0 0 1-3.46 0" />
+					</svg>
+				</button>
+				<button type="button" class="btn-icon" aria-label="Ayuda">
+					<svg
+						width="20"
+						height="20"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+					>
+						<circle cx="12" cy="12" r="10" />
+						<path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+						<line x1="12" y1="17" x2="12.01" y2="17" />
+					</svg>
+				</button>
+				<div class="user-avatar">👤</div>
+			</div>
+		</header>
+		<main class="container">
+			<h1>Registrar Instructor</h1>
+			<form id="formRegistroInstructor" class="form-registro" novalidate>
+				<!-- Sección de Foto -->
+				<section class="seccion-foto">
+					<label for="inputFoto" class="foto-container">
+						<div class="foto-preview" id="fotoPreview">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="48"
+								height="48"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+							>
+								<rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+								<circle cx="8.5" cy="8.5" r="1.5"></circle>
+								<polyline points="21 15 16 10 5 21"></polyline>
+							</svg>
+						</div>
+						<span class="foto-label">Subir Foto</span>
+						<span class="foto-hint">Adjunta y sube una imagen aquí o haz clic</span>
+						<input
+							type="file"
+							id="inputFoto"
+							name="foto"
+							accept="image/*"
+							aria-label="Seleccionar foto de perfil"
+						/>
+					</label>
+
+					<div class="campo-grupo">
+						<label for="estadoInicial">Estado Inicial*</label>
+						<select id="estadoInicial" name="estadoInicial" required>
+							<option value="activo">Activo</option>
+							<option value="inactivo">Inactivo</option>
+							<option value="pendiente">Pendiente</option>
+						</select>
+					</div>
+				</section>
+
+				<section class="seccion-datos">
+					<!-- Datos Personales -->
+					<div class="grupo-formulario">
+						<h2>Datos Personales</h2>
+
+						<div class="campo-grid">
+							<div class="campo-grupo">
+								<label for="nombre">Nombre*</label>
+								<input
+									type="text"
+									id="nombre"
+									name="nombre"
+									placeholder="Ej: Juan Carlos"
+									required
+									aria-required="true"
+								/>
+							</div>
+
+							<div class="campo-grupo">
+								<label for="apellidos">Apellidos*</label>
+								<input
+									type="text"
+									id="apellidos"
+									name="apellidos"
+									placeholder="Ej: Pérez Gómez"
+									required
+									aria-required="true"
+								/>
+							</div>
+
+							<div class="campo-grupo">
+								<label for="documentoId">Documento ID*</label>
+								<input
+									type="text"
+									id="documentoId"
+									name="documentoId"
+									placeholder="Ej: 1234567890"
+									required
+									aria-required="true"
+									pattern="[0-9]+"
+								/>
+							</div>
+
+							<div class="campo-grupo">
+								<label for="fechaNacimiento">Fecha Nacimiento*</label>
+								<input
+									type="date"
+									id="fechaNacimiento"
+									name="fechaNacimiento"
+									placeholder="dd/mm/aaaa"
+									required
+									aria-required="true"
+								/>
+							</div>
+						</div>
+					</div>
+
+					<!-- Datos Profesionales -->
+					<div class="grupo-formulario">
+						<h2>Datos Profesionales</h2>
+
+						<div class="campo-grid">
+							<div class="campo-grupo">
+								<label for="tituloAcademico">Título Académico</label>
+								<input
+									type="text"
+									id="tituloAcademico"
+									name="tituloAcademico"
+									placeholder="Ej: Ingeniero de Sistemas"
+								/>
+							</div>
+
+							<div class="campo-grupo">
+								<label for="especialidad">Especialidad Principal</label>
+								<input
+									type="text"
+									id="especialidad"
+									name="especialidad"
+									placeholder="Ej: Desarrollo Full Stack"
+								/>
+							</div>
+						</div>
+
+						<div class="campo-grid">
+						<div class="campo-grupo">
+							<label for="soporteDigital">Soporte Digital (Opcional)</label>
+							<div class="upload-area">
+								<input
+									type="file"
+									id="soporteDigital"
+									name="soporteDigital"
+									accept=".pdf,.doc,.docx"
+									aria-label="Subir soporte digital"
+								/>
+								<label for="soporteDigital" class="upload-label" id="soporteLabel">
+									<svg
+										width="24"
+										height="24"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+									>
+										<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+										<polyline points="17 8 12 3 7 8" />
+										<line x1="12" y1="3" x2="12" y2="15" />
+									</svg>
+									<span class="upload-text"
+										>Clic para subir objetos<br /><small
+											>(PDF, Word, Max: 5MB)</small
+										></span
+									>
+									<span class="file-name" id="soporteFileName" style="display: none;"></span>
+								</label>
+							</div>
+						</div>							<div class="campo-grupo">
+								<label for="anosExperiencia">Años de Experiencia</label>
+								<input
+									type="number"
+									id="anosExperiencia"
+									name="anosExperiencia"
+									placeholder="0"
+									min="0"
+									max="99"
+								/>
+							</div>
+						</div>
+
+						<div class="campo-grupo campo-completo">
+							<label for="areasExperiencia">Áreas de Experiencia (Etiquetas)</label>
+							<input
+								type="text"
+								id="areasExperiencia"
+								name="areasExperiencia"
+								placeholder="Ej: Microservicios, Gestión de Proyectos, UX/UI"
+							/>
+						</div>
+
+						<div class="campo-grupo campo-completo">
+							<label for="resumen">Resumen / Bio Corta</label>
+							<textarea
+								id="resumen"
+								name="resumen"
+								rows="4"
+								placeholder="Breve descripción del perfil profesional"
+							></textarea>
+						</div>
+					</div>
+
+					<!-- Contacto -->
+					<div class="grupo-formulario">
+						<h2>Contacto</h2>
+
+						<div class="campo-grid">
+							<div class="campo-grupo">
+								<label for="email">Email (Personal)*</label>
+								<input
+									type="email"
+									id="email"
+									name="email"
+									placeholder="ejemplo@correo.com"
+									required
+									aria-required="true"
+								/>
+							</div>
+
+							<div class="campo-grupo">
+								<label for="telefono">Teléfono Móvil</label>
+								<input
+									type="tel"
+									id="telefono"
+									name="telefono"
+									placeholder="Ej: +1555 234 0457"
+								/>
+							</div>
+
+							<div class="campo-grupo">
+								<label for="linkedin">URL Perfil LinkedIn</label>
+								<input
+									type="url"
+									id="linkedin"
+									name="linkedin"
+									placeholder="https://linkedin.com/in/"
+								/>
+							</div>
+
+							<div class="campo-grupo">
+								<label for="direccion">Dirección / Ciudad</label>
+								<input
+									type="text"
+									id="direccion"
+									name="direccion"
+									placeholder="Ej: Bogotá, Colombia"
+								/>
+							</div>
+						</div>
+					</div>
+
+					<!-- Botones de Acción -->
+					<div class="form-footer">
+						<button type="button" class="btn btn-secondary" id="btnCancelar">
+							Cancelar
+						</button>
+						<button type="submit" class="btn btn-primary" id="btnGuardar">
+							Guardar Instructor
+						</button>
+					</div>
+				</section>
+			</form>
+		</main>
+
+	</body>
+	<script src="js/form-instructor.js"></script>
+</html>

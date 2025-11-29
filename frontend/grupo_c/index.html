@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="description"
+			content="Sistema de gestión de instructores SICFOR - Administra y gestiona instructores de forma eficiente"
+		/>
+		<meta
+			name="keywords"
+			content="instructores, gestión, SICFOR, administración, cursos"
+		/>
+		<title>SICFOR - Gestor de Instructores</title>
+		<link rel="stylesheet" href="style/index.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+		/>
+	</head>
+	<body>
+		<header class="header" role="banner">
+			<nav class="header-icons" role="navigation" aria-label="Acciones rápidas">
+				<button
+					class="icon-btn"
+					aria-label="Notificaciones"
+					title="Ver notificaciones"
+				>
+					<i class="fas fa-bell" aria-hidden="true"></i>
+				</button>
+				<button class="icon-btn" aria-label="Ayuda" title="Obtener ayuda">
+					<i class="fas fa-question-circle" aria-hidden="true"></i>
+				</button>
+			</nav>
+		</header>
+		<!-- Main Content -->
+		<main class="main-content" role="main">
+			<h1 class="page-title">GESTOR DE INSTRUCTORES</h1>
+
+			<section
+				class="controls"
+				role="search"
+				aria-label="Controles de búsqueda y filtrado"
+			>
+				<div class="search-filter">
+					<div class="search-box">
+						<label for="searchInput" class="visually-hidden">Buscar instructor</label>
+						<i class="fas fa-search" aria-hidden="true"></i>
+						<input
+							type="search"
+							id="searchInput"
+							name="search"
+							placeholder="Buscar por nombre, especialidad..."
+							aria-label="Buscar por nombre o especialidad"
+						/>
+					</div>
+					<div class="filter-box">
+						<label for="filterStatus" class="visually-hidden"
+							>Filtrar por estado</label
+						>
+						<select
+							id="filterStatus"
+							name="status"
+							aria-label="Filtrar instructores por estado"
+						>
+							<option value="todos">Estado: Todos</option>
+							<option value="activo">Activo</option>
+							<option value="inactivo">Inactivo</option>
+						</select>
+					</div>
+				</div>
+				<button
+					class="btn-new-instructor"
+					id="btnNewInstructor"
+					aria-label="Crear nuevo instructor"
+				>
+					<i class="fas fa-plus" aria-hidden="true"></i>
+					<span>NUEVO INSTRUCTOR</span>
+				</button>
+			</section>
+
+			<section
+				class="instructors-grid"
+				id="instructorsGrid"
+				role="region"
+				aria-label="Lista de instructores"
+				aria-live="polite"
+			></section>
+		</main>
+	</body>
+	<script src="js/index.js"></script>
+</html>
