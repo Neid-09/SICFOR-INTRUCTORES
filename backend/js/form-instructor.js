@@ -93,14 +93,88 @@ inputSoporte.addEventListener('change', (e) => {
 });
 
 // Manejo de envio de formular
-formulario.addEventListener('submit', (e) => {
+// Manejo de envio de formulario (GUARDAR EN BD)
+formulario.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const formData = new FormData(formulario);
     const values = Object.fromEntries(formData.entries());
 
-    console.log('Datos del formulario:', values);
+    let query = '';
 
+    if (esEdicion && instructorId) {
+        // ===== UPDATE =====
+        query = `
+            UPDATE instructores SET
+                estado='${values.estadoInicial}',
+                nombres='${values.nombre}',
+                apellidos='${values.apellidos}',
+                email='${values.email}',
+                telefono='${values.telefono}',
+                documento='${values.documentoId}',
+                fecha_nacimiento='${values.fechaNacimiento}',
+                titulo_academico='${values.tituloAcademico}',
+                especialidad='${values.especialidad}',
+                anos_experiencia=${values.anosExperiencia || 0},
+                areas_experiencia='${values.areasExperiencia}',
+                resumen='${values.resumen}',
+                linkedin='${values.linkedin}',
+                direccion='${values.direccion}'
+            WHERE id=${instructorId};
+        `;
+    } else {
+        // ===== INSERT =====
+        query = `
+            INSERT INTO instructores (
+                estado,
+                nombres,
+                apellidos,
+                email,
+                telefono,
+                documento,
+                fecha_nacimiento,
+                titulo_academico,
+                especialidad,
+                anos_experiencia,
+                areas_experiencia,
+                resumen,
+                linkedin,
+                direccion
+            ) VALUES (
+                '${values.estadoInicial}',
+                '${values.nombre}',
+                '${values.apellidos}',
+                '${values.email}',
+                '${values.telefono}',
+                '${values.documentoId}',
+                '${values.fechaNacimiento}',
+                '${values.tituloAcademico}',
+                '${values.especialidad}',
+                ${values.anosExperiencia || 0},
+                '${values.areasExperiencia}',
+                '${values.resumen}',
+                '${values.linkedin}',
+                '${values.direccion}'
+            );
+        `;
+    }
+
+    try {
+        await fetch('/query', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ query })
+        });
+
+        alert(esEdicion ? 'Instructor actualizado correctamente' : 'Instructor registrado correctamente');
+        window.location.href = 'index.html';
+
+    } catch (error) {
+        console.error('Error al guardar:', error);
+        alert('Error al guardar el instructor');
+    }
 });
 
 // Manejo de cancelar
