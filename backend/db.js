@@ -11,7 +11,7 @@ let pool = mysql.createPool({
     port: process.env.DB_PORT
 })
 
-
+// guardar en bd
 /**
  * Crea una fila en la tabla especificada
  * 
